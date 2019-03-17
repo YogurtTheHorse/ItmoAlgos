@@ -18,8 +18,7 @@ void radix_sort(long *array, int n, long max_element) {
         }
 
         for (int i = n - 1; i >= 0; i--) {
-            output[count[(array[i] >> pow) & 255] - 1] = array[i];
-            count[(array[i] >> pow) & 255]--;
+            output[--count[(array[i] >> pow) & 255]] = array[i];
         }
 
         for (int i = 0; i < n; i++) {
