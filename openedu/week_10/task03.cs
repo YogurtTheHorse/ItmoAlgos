@@ -84,42 +84,17 @@ namespace ItmoAlgos
             }
 
             int maxAl = al - 1;
-            bool canAppendPrev = true;
-
-
             for (al--; al >= 0; al--)
             {
-                bool optimized = (parts[al].Length > 2 || partsCount[al] != 2) && (parts[al].Length != 1 || partsCount[al] != 3);
-                if (optimized)
+                if (al != maxAl)
                 {
-                    bool oldCanAppend = canAppendPrev;
-                    canAppendPrev = partsCount[al] <= 1;
-                    if ((al != maxAl) && (!oldCanAppend || !canAppendPrev))
-                    {
-                        sb.Append("+");
-                    }
-                    sb.Append(parts[al]);
-                    if (!canAppendPrev)
-                    {
-                        sb.Append("*");
-                        sb.Append(partsCount[al]);
-                    }
+                    sb.Append("+");
                 }
-                else
+                sb.Append(parts[al]);
+                if (partsCount[al] > 1)
                 {
-                    string o = parts[al] + parts[al];
-                    if (partsCount[al] == 3)
-                    {
-                        o += parts[al];
-                    }
-
-                    if (!canAppendPrev)
-                    {
-                        sb.Append("+");
-                    }
-                    sb.Append(o);
-
-                    canAppendPrev = true;
+                    sb.Append("*");
+                    sb.Append(partsCount[al]);
                 }
             }
 
