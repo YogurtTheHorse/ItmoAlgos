@@ -10,7 +10,6 @@ namespace ItmoAlgos
     {
         private static string[] _input;
         private static int _currentLineIndex;
-        private const long E15 = 1000000000000000;
 
         private static string ReadLine()
         {
